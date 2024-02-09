@@ -8,6 +8,7 @@ import Register from "./pages/auth/Register";
 import Reset from "./pages/auth/Reset";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import ProductDetails from "./components/product/productDetails/ProductDetails";
 
 const Layout = () => {
   return (
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/product-details/:id",
+        element: <ProductDetails />,
       },
     ],
   },
