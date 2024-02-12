@@ -172,6 +172,29 @@ a:hover {
   transition: all 0.3s;
 }
 
+.--btn-block {
+  width: 100%;
+}
+
+.--btn-primary {
+  color: #fff;
+  background: #007bff;
+}
+.--btn-secondary {
+  color: #fff;
+  border: 1px solid #fff;
+  background: transparent;
+}
+.--btn-danger {
+  color: #fff;
+  background: orangered;
+}
+
+.--btn-success {
+  color: #fff;
+  background: #28a745;
+}
+
 .--btn:hover {
   transform: translateY(-2px);
 }
