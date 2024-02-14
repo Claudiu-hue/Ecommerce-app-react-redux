@@ -9,6 +9,9 @@ import Reset from "./pages/auth/Reset";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import ProductDetails from "./components/product/productDetails/ProductDetails";
+import NotFound from "./pages/notFound/NotFound";
+import Cart from "./pages/cart/Cart";
+import CheckoutDetails from "./pages/checkout/CheckoutDetails";
 
 const Layout = () => {
   return (
@@ -48,6 +51,18 @@ const router = createBrowserRouter([
       {
         path: "/product-details/:id",
         element: <ProductDetails />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "checkout-details",
+        element: <CheckoutDetails />,
       },
     ],
   },

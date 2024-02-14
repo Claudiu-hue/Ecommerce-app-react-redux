@@ -5,13 +5,19 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
 import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
 } from "../../redux/slice/authSlice";
 import ShowOnLogin, { ShowOnLogout } from "../hiddenLink.js/hiddenLink";
+import {
+  CALCULATE_TOTAL_QUANTITY,
+  selectCartItems,
+  selectCartTotalQuantity,
+} from "../../redux/slice/cartSlice";
 
 const logo = (
   <div className={styles.logo}>
@@ -23,22 +29,15 @@ const logo = (
   </div>
 );
 
-const cart = (
-  <span className={styles.cart}>
-    <Link to="/cart">
-      Cart
-      <FaShoppingCart size={20} />
-      <p>10</p>
-    </Link>
-  </span>
-);
-
 const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "");
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [displayName, setDisplayName] = useState("");
   const [scrollPage, setScrollPage] = useState(false);
+
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+  const cartItems = useSelector(selectCartItems);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -97,6 +96,20 @@ const Header = () => {
     });
   }, [dispatch, displayName]);
 
+  useEffect(() => {
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  }, [cartItems, dispatch]);
+
+  const cart = (
+    <span className={styles.cart}>
+      <Link to="/cart">
+        Cart
+        <FaShoppingCart size={20} />
+        <p>{cartTotalQuantity}</p>
+      </Link>
+    </span>
+  );
+
   return (
     <>
       <header className={scrollPage ? `${styles.fixed}` : null}>
@@ -145,7 +158,7 @@ const Header = () => {
                 <ShowOnLogin>
                   <a href="#home" style={{ color: "#ff7722" }}>
                     <FaUserCircle size={16} />
-                    Hi, NAME
+                    Hi, {displayName}
                   </a>
                 </ShowOnLogin>
                 <ShowOnLogin>
@@ -168,6 +181,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <ToastContainer />
     </>
   );
 };
