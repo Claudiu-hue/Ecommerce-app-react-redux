@@ -1,24 +1,44 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductDetails.module.scss";
 import { Link, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useFetchDocument from "../../../customHooks/useFetchDocument";
 import spinnerImg from "../../../assets/spinner.jpg";
+import {
+  ADD_TO_CART,
+  CALCULATE_TOTAL_QUANTITY,
+  DECREASE_CART,
+  selectCartItems,
+} from "../../../redux/slice/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
-  console.log(id);
+  const cartItems = useSelector(selectCartItems);
   const { document } = useFetchDocument("products", id);
+
+  const cart = cartItems.find((cart) => cart.id === id);
+  const isCartAdded = cartItems.findIndex((cart) => {
+    return cart.id === id;
+  });
+
+  console.log(isCartAdded);
+  console.log(cart);
 
   useEffect(() => {
     setProduct(document);
   }, [document]);
 
-  const decreaseCart = () => {};
+  const decreaseCart = (product) => {
+    dispatch(DECREASE_CART(product));
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  };
 
-  const addToCart = () => {};
+  const addToCart = (product) => {
+    dispatch(ADD_TO_CART(product));
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  };
 
   return (
     <section>
@@ -47,23 +67,25 @@ const ProductDetails = () => {
                 </p>
 
                 <div className={styles.count}>
-                  <>
-                    <button
-                      className="--btn"
-                      onClick={() => decreaseCart(product)}
-                    >
-                      -
-                    </button>
-                    <p>
-                      <b>20</b>
-                    </p>
-                    <button
-                      className="--btn"
-                      onClick={() => addToCart(product)}
-                    >
-                      +
-                    </button>
-                  </>
+                  {isCartAdded < 0 ? null : (
+                    <>
+                      <button
+                        className="--btn"
+                        onClick={() => decreaseCart(product)}
+                      >
+                        -
+                      </button>
+                      <p>
+                        <b>{cart.cartQuantity}</b>
+                      </p>
+                      <button
+                        className="--btn"
+                        onClick={() => addToCart(product)}
+                      >
+                        +
+                      </button>
+                    </>
+                  )}
                 </div>
                 <button
                   className="--btn --btn-danger"

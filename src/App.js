@@ -14,6 +14,8 @@ import Cart from "./pages/cart/Cart";
 import CheckoutDetails from "./pages/checkout/CheckoutDetails";
 import Checkout from "./pages/checkout/Checkout";
 import CheckoutSuccess from "./pages/checkout/CheckoutSuccess";
+import Admin from "./pages/admin/Admin";
+import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
 
 const Layout = () => {
   return (
@@ -54,10 +56,7 @@ const router = createBrowserRouter([
         path: "/product-details/:id",
         element: <ProductDetails />,
       },
-      {
-        path: "*",
-        element: <NotFound />,
-      },
+
       {
         path: "/cart",
         element: <Cart />,
@@ -73,6 +72,18 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/admin/*",
+        element: (
+          <AdminOnlyRoute>
+            <Admin />
+          </AdminOnlyRoute>
+        ),
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
