@@ -18,6 +18,8 @@ import Admin from "./pages/admin/Admin";
 import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
 import OrderHistory from "./pages/orderHistory/OrderHistory";
 import OrderDetails from "./pages/orderDetails/OrderDetails";
+import ReviewProducts from "./components/review/reviewProducts/ReviewProducts";
+import ListProductReview from "./components/review/listProductReview/ListProductReview";
 
 const Layout = () => {
   return (
@@ -90,6 +92,14 @@ const router = createBrowserRouter([
       {
         path: "order-details/:id",
         element: <OrderDetails />,
+      },
+      {
+        path: "review-product/:id",
+        element: <ReviewProducts />,
+      },
+      {
+        path: "list-review-product/:id",
+        element: <ListProductReview />,
       },
       {
         path: "*",

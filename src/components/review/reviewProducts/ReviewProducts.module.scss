@@ -1,0 +1,43 @@
+.review {
+  .card {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+  }
+  form {
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    input[type="email"],
+    select,
+    textarea,
+    input[type="password"] {
+      display: block;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 10px;
+      margin: 10px auto;
+      width: 100%;
+      border: 1px solid #777;
+      border-radius: 3px;
+      outline: none;
+    }
+  }
+
+  .content {
+    display: flex;
+    gap: 100px;
+  }
+
+  .allReviews {
+    height: fit-content;
+    a {
+      color: white;
+    }
+  }
+}

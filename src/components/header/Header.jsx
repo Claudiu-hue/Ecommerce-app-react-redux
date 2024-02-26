@@ -12,7 +12,7 @@ import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
 } from "../../redux/slice/authSlice";
-import ShowOnLogin, { ShowOnLogout } from "../hiddenLink.js/hiddenLink";
+import ShowOnLogin, { ShowOnLogout } from "../hiddenLink/hiddenLink";
 import {
   CALCULATE_TOTAL_QUANTITY,
   selectCartItems,

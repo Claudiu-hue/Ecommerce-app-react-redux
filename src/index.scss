@@ -36,7 +36,7 @@ body {
 
 section {
   width: 100%;
-  padding: 4rem 0;
+  padding: 40px 0;
 }
 
 .container {
@@ -94,13 +94,13 @@ section {
 /* Grid */
 .--grid-15 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   row-gap: 10px;
   column-gap: 10px;
 }
 .--grid-25 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   row-gap: 10px;
   column-gap: 10px;
 }
@@ -124,7 +124,7 @@ h4 {
   font-weight: 500;
   line-height: 1.2;
   color: var(--color-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 h1 {
   font-size: 40px;
