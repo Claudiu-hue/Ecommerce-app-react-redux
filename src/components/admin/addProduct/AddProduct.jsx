@@ -95,7 +95,7 @@ const AddProduct = () => {
         category: product.category,
         brand: product.brand,
         desc: product.desc,
-        createdAt: Timestamp.now.ToDate(),
+        createdAt: Timestamp.now().toDate(),
       });
       setIsLoading(false);
       setUploadProgress(0);

@@ -16,6 +16,8 @@ import Checkout from "./pages/checkout/Checkout";
 import CheckoutSuccess from "./pages/checkout/CheckoutSuccess";
 import Admin from "./pages/admin/Admin";
 import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
+import OrderHistory from "./pages/orderHistory/OrderHistory";
+import OrderDetails from "./pages/orderDetails/OrderDetails";
 
 const Layout = () => {
   return (
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
             <Admin />
           </AdminOnlyRoute>
         ),
+      },
+      {
+        path: "/order-history",
+        element: <OrderHistory />,
+      },
+      {
+        path: "order-details/:id",
+        element: <OrderDetails />,
       },
       {
         path: "*",

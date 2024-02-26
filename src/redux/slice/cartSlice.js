@@ -5,7 +5,9 @@ const initialState = {
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
   previousURL: "",
-  cartItems: [],
+  cartItems: localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [],
 };
 
 const cartSlice = createSlice({

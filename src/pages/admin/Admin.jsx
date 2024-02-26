@@ -4,6 +4,9 @@ import Navbar from "../../components/admin/navbar/Navbar";
 import Home from "../../components/admin/home/Home";
 import { useRoutes } from "react-router-dom";
 import AddProduct from "../../components/admin/addProduct/AddProduct";
+import ViewProducts from "../../components/admin/viewProducts/ViewProducts";
+import Orders from "../../components/admin/orders/Orders";
+import OrderDetails from "../../components/admin/orderDetails/OrderDetails";
 
 const Admin = () => {
   const adminRoutes = useRoutes([
@@ -14,6 +17,18 @@ const Admin = () => {
     {
       path: "add-product/:id",
       element: <AddProduct />,
+    },
+    {
+      path: "all-products",
+      element: <ViewProducts />,
+    },
+    {
+      path: "orders",
+      element: <Orders />,
+    },
+    {
+      path: "order-details/:id",
+      element: <OrderDetails />,
     },
   ]);
 
