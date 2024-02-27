@@ -18,6 +18,7 @@ import {
   selectCartItems,
   selectCartTotalQuantity,
 } from "../../redux/slice/cartSlice";
+import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
 
 const logo = (
   <div className={styles.logo}>
@@ -133,9 +134,11 @@ const Header = () => {
                 <FaTimes size={22} color="#fff" onClick={hideMenu} />
               </li>
               <li>
-                <Link to="/admin/home">
-                  <button className="--btn --btn-primary">Admin</button>
-                </Link>
+                <AdminOnlyLink>
+                  <Link to="/admin/home">
+                    <button className="--btn --btn-primary">Admin</button>
+                  </Link>
+                </AdminOnlyLink>
               </li>
               <li>
                 <NavLink to="/" className={activeLink}>
